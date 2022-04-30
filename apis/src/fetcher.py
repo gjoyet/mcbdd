@@ -6,8 +6,9 @@ from chembl_webresource_client.new_client import new_client
 # REMINDER: activity endpoint links compounds to targets
 
 if __name__ == '__main__':
-    drugs = new_client.drug.filter(first_approval__isnull=False, first_approval__gte=2012.0).order_by('first_approval')
+    drugs = new_client.drug.filter(first_approval__isnull=False).order_by('first_approval')
     drdf = pd.DataFrame(drugs)
+    print(drdf.shape)
 
     activities = new_client.activity.filter(molecule_chembl_id__in=list(drdf.molecule_chembl_id)).only(['target_chembl_id'])
     targets_id = [a['target_chembl_id'] for a in activities]
@@ -23,7 +24,7 @@ if __name__ == '__main__':
     keywords = []
 
     for url in requestURLs:
-        r = requests.get(url, headers={"Accept": "application/xml"})
+        r = requests.get(url, headers={"Accept": "application/json"})
         if not r.ok:
             r.raise_for_status()
             sys.exit()
