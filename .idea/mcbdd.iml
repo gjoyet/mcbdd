@@ -4,7 +4,7 @@
     <content url="file://$MODULE_DIR$">
       <excludeFolder url="file://$MODULE_DIR$/apis/.ipynb_checkpoints" />
     </content>
-    <orderEntry type="jdk" jdkName="Python 3.9 (apis)" jdkType="Python SDK" />
+    <orderEntry type="jdk" jdkName="Python 3.10 (mcbdd)" jdkType="Python SDK" />
     <orderEntry type="sourceFolder" forTests="false" />
   </component>
 </module>
